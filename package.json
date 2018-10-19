@@ -1,9 +1,16 @@
 {
   "name": "ts-thunk",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "",
   "author": "jakub.knejzlik",
   "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakubknejzlik/ts-thunk.git"
+  },
   "scripts": {
     "test": "npm run test:unit && npm run test:cov",
     "test:unit": "jest",
