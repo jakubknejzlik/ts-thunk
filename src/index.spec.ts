@@ -13,4 +13,11 @@ describe('ts-thunk', () => {
     expect(resolveThunk(rawValue)).toBe(value);
     expect(resolveThunk(thunkValue)).toBe(value);
   });
+  it('should resolve thunk with arguments', () => {
+    const t: Thunk<string, boolean> = (x: string) => `${x}_blah`;
+
+    const resolved = resolveThunk(t, 'xxx');
+
+    expect(resolved).toBe('xxx_blah');
+  });
 });
