@@ -1,8 +1,8 @@
-import { resolveThunk, Thunk, isThunkFunction } from './';
+import { Thunk, isThunkFunction, resolveThunk } from "./";
 
-describe('ts-thunk', () => {
-  it('should resolve thunk value', () => {
-    const value = 'john.doe';
+describe("ts-thunk", () => {
+  it("should resolve thunk value", () => {
+    const value = "john.doe";
 
     const rawValue: Thunk<string> = value;
     const thunkValue: Thunk<string> = () => value;
@@ -14,18 +14,18 @@ describe('ts-thunk', () => {
     expect(resolveThunk(thunkValue)).toBe(value);
   });
 
-  it('should resolve thunk with arguments', () => {
-    const t: Thunk<string, boolean> = (x: string) => `${x}_blah`;
+  it("should resolve thunk with arguments", () => {
+    const t: Thunk<string, string> = (x: string) => `${x}_blah`;
 
-    const resolved = resolveThunk(t, 'xxx');
+    const resolved = resolveThunk(t, "xxx");
 
-    expect(resolved).toBe('xxx_blah');
+    expect(resolved).toBe("xxx_blah");
   });
 
-  it('should resolve undefined thunk', () => {
+  it("should resolve undefined thunk", () => {
     const t: Thunk<string, boolean> | undefined = undefined;
 
-    const resolved = resolveThunk(t, 'xxx');
+    const resolved = resolveThunk(t, false);
 
     expect(resolved).toBe(undefined);
   });
