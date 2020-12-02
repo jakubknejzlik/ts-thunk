@@ -26,14 +26,20 @@ export function resolveOptionalThunk<T, U>(
   return resolveThunk(thunk, arg);
 }
 
+export function isThunkAsyncFunction<T, U>(
+  thunk: ThunkAsync<T, U>
+): thunk is ThunkAsyncFunction<T, U> {
+  return typeof thunk === "function";
+}
+
 export async function resolveThunkAsync<T, U>(
-  thunk: Thunk<T, U>,
+  thunk: ThunkAsync<T, U>,
   arg?: U
 ): Promise<T> {
-  return isThunkFunction(thunk) ? await thunk(arg) : thunk;
+  return isThunkAsyncFunction(thunk) ? await thunk(arg) : thunk;
 }
 export async function resolveOptionalThunkAsync<T, U>(
-  thunk?: Thunk<T, U>,
+  thunk?: ThunkAsync<T, U>,
   arg?: U
 ): Promise<T | undefined> {
   if (typeof thunk === "undefined") {
