@@ -14,6 +14,7 @@
   "scripts": {
     "test": "npm run test:unit && npm run test:cov",
     "test:unit": "jest",
+    "prepublishOnly": "tsc",
     "test:cov": "jest --coverage"
   },
   "dependencies": {},
