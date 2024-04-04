@@ -10,16 +10,13 @@ export function isThunkFunction<T, U>(
   return typeof thunk === "function";
 }
 
-export function resolveThunk<T, U>(
-  thunk: Thunk<T, U>,
-  arg?: U
-): Promise<T> | T {
+export function resolveThunk<T, U>(thunk: Thunk<T, U>, arg?: U): T {
   return isThunkFunction(thunk) ? thunk(arg) : thunk;
 }
 export function resolveOptionalThunk<T, U>(
   thunk?: Thunk<T, U>,
   arg?: U
-): Promise<T> | T | undefined {
+): T | undefined {
   if (typeof thunk === "undefined") {
     return undefined;
   }
